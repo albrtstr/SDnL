@@ -47,5 +47,14 @@ public class TreeNode {
         this.leftChild = leftChild;
     }
     
+    public void insert (int x){
+        if (element > x) {
+            if (leftChild == null) {
+                leftChild = new TreeNode (element);
+            }else{
+                leftChild.insert(x);
+            }
+        }
+    }
     
 }

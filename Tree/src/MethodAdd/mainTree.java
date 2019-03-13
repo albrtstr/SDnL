@@ -28,5 +28,13 @@ public class mainTree {
         System.out.println();
         System.out.print("Post-Order Traversal = ");
         test.helpPostOrder();
+        
+        System.out.println("");
+        TreeNode found = test.getNode(25);
+        if (found != null) {
+            System.out.println("Ketemu node key = "+ found.element);
+        }else{
+            System.out.println("Node key = "+found.element+"tidak ada");
+        }
     }
 }

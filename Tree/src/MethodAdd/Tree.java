@@ -73,4 +73,28 @@ public class Tree {
     public void helpPostOrder(){
         postOrder(root);
     }
+    
+    public TreeNode getNode (int key){
+        TreeNode bantu = root;
+        while (bantu != null) {
+            if (bantu.element == key) {
+                return bantu;
+            }else{
+                if (bantu.element > key) {
+                    bantu = bantu.leftChild;
+                }else{
+                    bantu = bantu.rightChild;
+                }
+            }
+        }
+        return null;
+    }
+    
+    public void addRecurs(int x){
+        if (root == null) {
+            root = new TreeNode(x);
+        }else{
+            root.insert(x);
+        }
+    }
 }
