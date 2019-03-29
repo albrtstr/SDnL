@@ -3,27 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MethodAdd;
+
+package AddRecursive;
 
 /**
  *
- * @author admin
+ * @author ASUS
  */
-public class mainTree {
+public class MainTree {
     public static void main(String[] args) {
         Tree test = new Tree();
         
-        test.add(20);
-        test.add(15);
-        test.add(10);
-        test.add(4);
-        test.add(19);
-        test.add(50);
-        test.add(25);
-        test.add(30);
-        test.add(2);
-        test.add(5);
-        
+        int[]data = {20, 15, 10, 4, 19, 50, 25, 30, 2, 5};
+        for (int i = 0; i < data.length; i++) {
+            test.add(data[i]);
+        }
         
         System.out.print("Pre-Order Traversal  = ");
         test.helpPreOrder();

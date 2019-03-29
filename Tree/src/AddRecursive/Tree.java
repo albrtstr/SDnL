@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MethodAdd;
 
+package AddRecursive;
 
 /**
  *
- * @author admin
+ * @author ASUS
  */
 public class Tree {
     private TreeNode root;
@@ -34,31 +34,7 @@ public class Tree {
         return root == null;
     }
     
-    public void add(int x){
-        if (root == null) {
-            root = new TreeNode(x);
-        }else{
-            TreeNode bantu = root;
-            while (bantu != null) {
-                if (x < bantu.element) {
-                     if (bantu.leftChild == null) {
-                        bantu.leftChild = new TreeNode(x);
-                        bantu = null;
-                    } else{
-                        bantu = bantu.leftChild;
-                    }
-                }else{
-                    if (bantu.rightChild == null) {
-                        bantu.rightChild = new TreeNode(x);
-                        bantu = null;
-                    }else{
-                        bantu = bantu.rightChild;
-                    }
-                }
-            }
-        }
-    }
-    
+  
     private void preOrder(TreeNode localRoot){
         if (localRoot != null) {
             System.out.print(localRoot.getElement()+" ");
@@ -111,6 +87,13 @@ public class Tree {
         return null;
     }
     
-    
-    
+    public void add(int x){
+        TreeNode node = new TreeNode(x);
+        if (root == null) {
+            root = node;
+        }else{
+            getRoot().insert(x);
+            size++;
+        }
+    }
 }

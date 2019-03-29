@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MethodAdd;
+
+package AddRecursive;
 
 /**
  *
- * @author admin
+ * @author ASUS
  */
 public class TreeNode {
     int element;
@@ -47,15 +48,20 @@ public class TreeNode {
         this.leftChild = leftChild;
     }
     
-    public void insert (int x){
-        if (element > x) {
-            if (leftChild == null) {
-                leftChild = new TreeNode (element);
-            }else{
-                leftChild.insert(x);
+    
+    public void insert(int key) {
+        if (key > getElement()) {
+            if (getRightChild() == null) {
+                setRightChild(new TreeNode(key));
+            } else {
+                getRightChild().insert(key);
+            }
+        } else {
+            if (getLeftChild() == null) {
+                setLeftChild(new TreeNode(key));
+            } else {
+                getLeftChild().insert(key);
             }
         }
     }
-    
-    
 }
