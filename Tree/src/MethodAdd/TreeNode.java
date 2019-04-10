@@ -57,5 +57,11 @@ public class TreeNode {
         }
     }
     
+    public boolean isLeaf(){
+        rightChild = leftChild = null;
+        return false;
+    }
+    
+    
     
 }

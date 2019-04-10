@@ -13,17 +13,12 @@ public class mainTree {
     public static void main(String[] args) {
         Tree test = new Tree();
         
-        test.add(20);
-        test.add(15);
-        test.add(10);
-        test.add(4);
-        test.add(19);
-        test.add(50);
-        test.add(25);
-        test.add(30);
-        test.add(2);
-        test.add(5);
+        int[]data = {16, 3, 2, 20, 17, 25};
+        for (int i = 0; i < data.length; i++) {
+            test.add(data[i]);
+        }
         
+        test.hapus01(16);
         
         System.out.print("Pre-Order Traversal  = ");
         test.helpPreOrder();
@@ -34,12 +29,14 @@ public class mainTree {
         System.out.print("Post-Order Traversal = ");
         test.helpPostOrder();
         
-        System.out.println("");
-        TreeNode found = test.getNode(14);
-        if (found != null) {
-            System.out.println("Ketemu node key = "+ found.element);
-        }else{
-            System.out.println("Node key = "+found.element+"tidak ada");
-        }
+        
+        
+//        System.out.println("");
+//        TreeNode found = test.getNode(20);
+//        if (found != null) {
+//            System.out.println("Ketemu node key = "+ found.element);
+//        }else{
+//            System.out.println("Node key = "+found.element+"tidak ada");
+//        }
     }
 }

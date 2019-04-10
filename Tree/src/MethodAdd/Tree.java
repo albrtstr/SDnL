@@ -13,6 +13,7 @@ package MethodAdd;
 public class Tree {
     private TreeNode root;
     private int size = 1;
+    private TreeNode parent;
 
     public TreeNode getRoot() {
         return root;
@@ -110,6 +111,102 @@ public class Tree {
         }
         return null;
     }
+    
+    public TreeNode getParent (int key){
+        TreeNode bantu = root;
+        TreeNode parent = null;
+        while (bantu != null) {
+            if (key == bantu.element) {
+                return parent;
+            } else if (key < bantu.element){
+                parent = bantu;
+                bantu = bantu.leftChild;
+            } else {
+                parent = bantu;
+                bantu = bantu.rightChild;
+            }
+        }
+        return null;
+    }
+    
+    public TreeNode hapus01 (int key){
+        TreeNode bantu = getNode(key);
+        if (bantu == null) {
+            return null;
+        } else {
+            if (bantu.element == root.element) {
+                if (bantu.isLeaf()) {
+                    root = null;
+                } else if (bantu.rightChild == null) {
+                    root = bantu.leftChild;
+                } else if (bantu.leftChild == null) {
+                    root = bantu.rightChild;
+                }
+            } else {
+                parent = getParent(bantu.element);
+                if (key < parent.element) {
+                    if (bantu.isLeaf()) {
+                        parent.leftChild = null;
+                    } else if (bantu.rightChild == null) {
+                        parent.leftChild = bantu.leftChild;
+                    } else if (bantu.leftChild == null) {
+                        parent.leftChild = bantu.rightChild;
+                    }
+                } else {
+                    if (bantu.isLeaf()) {
+                        parent.rightChild = null;
+                    } else if (bantu.rightChild == null) {
+                        parent.rightChild = bantu.leftChild;
+                    } else if (bantu.leftChild == null) {
+                        parent.rightChild = bantu.rightChild;
+                    }
+                }
+                return bantu;
+            }
+        }
+        return null;
+    }
+    
+    public TreeNode hapus012 (int key){
+        TreeNode bantu = getNode(key);
+        if (bantu == null) {
+            return null;
+        } else {
+            if (bantu.element == root.element) {
+                if (bantu.isLeaf()) {
+                    root = null;
+                } else if (bantu.rightChild == null) {
+                    root = bantu.leftChild;
+                } else if (bantu.leftChild == null) {
+                    root = bantu.rightChild;
+                } else {
+                    
+                }
+            } else {
+                parent = getParent(bantu.element);
+                if (key < parent.element) {
+                    if (bantu.isLeaf()) {
+                        parent.leftChild = null;
+                    } else if (bantu.rightChild == null) {
+                        parent.leftChild = bantu.leftChild;
+                    } else if (bantu.leftChild == null) {
+                        parent.leftChild = bantu.rightChild;
+                    }
+                } else {
+                    if (bantu.isLeaf()) {
+                        parent.rightChild = null;
+                    } else if (bantu.rightChild == null) {
+                        parent.rightChild = bantu.leftChild;
+                    } else if (bantu.leftChild == null) {
+                        parent.rightChild = bantu.rightChild;
+                    }
+                }
+                return bantu;
+            }
+        }
+        return null;
+    }
+
     
     
     
