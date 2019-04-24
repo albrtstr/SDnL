@@ -13,12 +13,12 @@ public class mainTree {
     public static void main(String[] args) {
         Tree test = new Tree();
         
-        int[]data = {16, 3, 2, 20, 17, 25};
+        int[]data = {23, 19, 5, 45, 35, 42};
         for (int i = 0; i < data.length; i++) {
             test.add(data[i]);
         }
         
-        test.hapus01(16);
+        test.hapus01(35);
         
         System.out.print("Pre-Order Traversal  = ");
         test.helpPreOrder();

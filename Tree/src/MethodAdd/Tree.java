@@ -14,6 +14,25 @@ public class Tree {
     private TreeNode root;
     private int size = 1;
     private TreeNode parent;
+    private TreeNode predecessor;
+
+    public TreeNode getPredecessor(TreeNode key) {
+        TreeNode bantu = key;
+        if (bantu.leftChild == null) {
+            return null;
+        } else {
+            bantu = bantu.leftChild;
+            while (bantu.rightChild != null) {
+                if (bantu.rightChild == null) {
+                    return bantu;
+                } else {
+                    bantu = bantu.rightChild;
+                }
+            }
+        }
+        return bantu;
+    }
+
 
     public TreeNode getRoot() {
         return root;
@@ -180,6 +199,16 @@ public class Tree {
                 } else if (bantu.leftChild == null) {
                     root = bantu.rightChild;
                 } else {
+                    TreeNode predecessor = getPredecessor(bantu);
+                    TreeNode parentPredecessor = getParent(key);
+                    bantu.element = predecessor.element;
+                    if (parentPredecessor != bantu) {
+                        if (predecessor.leftChild != null) {
+                            parentPredecessor.rightChild = predecessor.leftChild;
+                        } else {
+                            parentPredecessor.rightChild = null;
+                        }
+                    }
                     
                 }
             } else {
