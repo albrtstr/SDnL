@@ -208,6 +208,8 @@ public class Tree {
                         } else {
                             parentPredecessor.rightChild = null;
                         }
+                    } else {
+                        bantu.leftChild = predecessor.leftChild;
                     }
                     
                 }
@@ -220,6 +222,19 @@ public class Tree {
                         parent.leftChild = bantu.leftChild;
                     } else if (bantu.leftChild == null) {
                         parent.leftChild = bantu.rightChild;
+                    } else {
+                        TreeNode predecessor = getPredecessor(bantu);
+                        TreeNode parentPredecessor = getParent(key);
+                        bantu.element = predecessor.element;
+                        if (parentPredecessor != bantu) {
+                            if (predecessor.leftChild != null) {
+                                parentPredecessor.rightChild = predecessor.leftChild;
+                            } else {
+                                parentPredecessor.rightChild = null;;
+                            }
+                        } else {
+                            bantu.leftChild = predecessor.leftChild;
+                        }
                     }
                 } else {
                     if (bantu.isLeaf()) {
@@ -228,6 +243,19 @@ public class Tree {
                         parent.rightChild = bantu.leftChild;
                     } else if (bantu.leftChild == null) {
                         parent.rightChild = bantu.rightChild;
+                    } else {
+                        TreeNode predecessor = getPredecessor(bantu);
+                        TreeNode parentPredecessor = getParent(key);
+                        bantu.element = predecessor.element;
+                        if (parentPredecessor != bantu) {
+                            if (predecessor.leftChild != null) {
+                                parentPredecessor.rightChild = predecessor.leftChild;
+                            } else {
+                                parentPredecessor.rightChild = null;
+                            }
+                        } else {
+                            bantu.leftChild = predecessor.leftChild;
+                        }
                     }
                 }
                 return bantu;
