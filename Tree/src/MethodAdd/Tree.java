@@ -5,6 +5,8 @@
  */
 package MethodAdd;
 
+import java.util.Stack;
+
 
 /**
  *
@@ -264,7 +266,67 @@ public class Tree {
         return null;
     }
 
+    public TreeNode hapus012Suc (int key){
+        TreeNode bantu;
+        bantu = getNode(key);
+        if (bantu == null) {
+            return null;
+        } else {
+            if (bantu.element == root.element) {
+                if (bantu.isLeaf()) {
+                    root = null;
+                } else if (bantu.rightChild == null){
+                    root = bantu.leftChild;
+                }
+            }
+        }
+        return null;
+    }
     
+    public void addExpressionInfix(String a){
+        Stack<TreeNode> operand = new Stack();
+        Stack<TreeNode> operator = new Stack();
+        TreeNode akar, kanan, kiri;
+        
+        for (int i = 0; i < a.length(); i++) {
+            char c = a.charAt(i);
+            if (c == '(' || c == '-' || c == '*' || c == '/') {
+                operator.push(new TreeNode(c));
+            } else if (c == ')'){
+                kanan = operand.pop();
+                kiri = operand.pop();
+                akar = operand.pop();
+                operand.push(combine(akar, root, kiri));            }
+        }
+        
+        char c=a.charAt(0);
+        
+        switch (c) {
+            case '(':
+                operator.push(new TreeNode(c));
+                break;
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                operator.push(new TreeNode(c));
+                break;
+            default:
+                operand.push(new TreeNode(c));
+        }
+    }
     
+    public void addExpressionPrefix(String a){
+        
+    }
     
+    public void addExpressionPostfix(String a){
+        
+    }
+    
+    private TreeNode combine(TreeNode operator, TreeNode nodeLeft, TreeNode nodeRight){
+        operator.leftChild = nodeLeft;
+        operator.rightChild = nodeRight;
+        return operator;
+    }
 }
